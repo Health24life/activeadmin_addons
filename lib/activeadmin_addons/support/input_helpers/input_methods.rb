@@ -23,6 +23,7 @@ module ActiveAdminAddons
     end
 
     def method_model
+      binding.pry
       object_class.reflect_on_association(association_name).try(:klass) ||
         association_name.classify.constantize
     end
