@@ -23,9 +23,8 @@ module ActiveAdminAddons
     end
 
     def method_model
-      binding.pry
       object_class.reflect_on_association(association_name).try(:klass) ||
-        association_name.classify.constantize
+        (association_name.classify.constantize rescue object.send(association_name).class)
     end
 
     def tableize_method
